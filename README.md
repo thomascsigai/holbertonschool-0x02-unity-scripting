@@ -1,2 +1,1 @@
-# holbertonschool-0x02-unity-scripting
- 
+This repo contains the unity project to complete project 'Unity - Scripting' of Holberton School's AR/VR specialization.
