@@ -13,6 +13,8 @@ public class PlayerController : MonoBehaviour
 
     private int score = 0;
 
+    public int health = 5;
+
     private void Awake()
     {
         controls = new PlayerControls();
@@ -48,6 +50,12 @@ public class PlayerController : MonoBehaviour
             Destroy(other.gameObject);
             score++;
             Debug.Log($"Score: {score}");
+        }
+
+        if(other.gameObject.CompareTag("Trap"))
+        {
+            health--;
+            Debug.Log($"Health: {health}");
         }
     }
 }
