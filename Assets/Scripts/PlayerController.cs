@@ -11,6 +11,8 @@ public class PlayerController : MonoBehaviour
     private Vector2 move;
     private Rigidbody rb;
 
+    private int score = 0;
+
     private void Awake()
     {
         controls = new PlayerControls();
@@ -37,5 +39,15 @@ public class PlayerController : MonoBehaviour
     private void OnDisable()
     {
         controls.movementActionMap.Disable();
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if(other.gameObject.CompareTag("Pickup"))
+        {
+            Destroy(other.gameObject);
+            score++;
+            Debug.Log($"Score: {score}");
+        }
     }
 }
