@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.SceneManagement;
 
 public class PlayerController : MonoBehaviour
 {
@@ -56,6 +57,25 @@ public class PlayerController : MonoBehaviour
         {
             health--;
             Debug.Log($"Health: {health}");
+        }
+
+        if(other.gameObject.CompareTag("Goal"))
+        {
+            Debug.Log("You win!");
+        }
+
+        if(other.gameObject.CompareTag("Teleporter"))
+        {
+            transform.position = other.gameObject.GetComponent<TeleporterBehavior>().otherTeleporter.transform.position;
+        }
+    }
+
+    private void Update()
+    {
+        if(health == 0)
+        {
+            Debug.Log("Game Over!");
+            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
         }
     }
 }
